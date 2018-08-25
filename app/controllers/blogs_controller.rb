@@ -1,11 +1,9 @@
 class BlogsController < ApplicationController
 
   def index
-    #@blogs = Blog.includes(:user).order("created_at DESC")
     @username = current_user.username  if user_signed_in?
     @search = Blog.search(params[:q])
     @blogs = @search.result.includes(:user).order("created_at DESC")
-    #binding.pry
   end
 
   def new
