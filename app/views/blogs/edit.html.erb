@@ -1,0 +1,20 @@
+<div class="contents row">
+  <%= form_for @blog, url: "/blogs/#{@blog.id}" do |f| %>
+    <h3>
+      編集する
+    </h3>
+
+    <div class="field">
+      <%= f.text_field :title, :name=>"title" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :text, :name=>"text" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class=>"btn", :value=>"更新" %>
+    </div>
+
+  <% end %>
+</div>

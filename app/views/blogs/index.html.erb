@@ -1,0 +1,21 @@
+<!-- <div class="card largs"> -->
+<div class="contents row" >
+  <div class="row">
+
+    <%= search_form_for @search do |f| %> <!-- 記事検索機能 -->
+      <div class="form-group">
+        <%= f.text_field :text_cont %>
+      </div>
+      <div class="actions"><%= f.submit "記事検索", :class => "btn" %></div>
+    <% end %>
+
+    <%= link_to 'ランダム表示', "/blogs/random", :class => "btn", method: :get %>
+
+    <div class="col s12 m12">
+      <% @blogs.each do |blog| %>
+        <%= render partial: "blog", locals: { blog: blog } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

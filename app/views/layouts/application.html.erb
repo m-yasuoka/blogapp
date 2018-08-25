@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogapp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+    <header>
+      <nav class="blue lighten-1"><!-- メニューバーの色の設定 -->
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Blog</a>
+          <% if user_signed_in? %>
+            <div class="user_nav grid-6">
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a><%= @username %>さん</a></li>
+                <li><a class="post" href="/blogs/new">新規投稿</a></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+            <div class="grid-6">
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <p>
+        BlogApp
+      </p>
+    </footer>
+  </body>
+</html>

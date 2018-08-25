@@ -1,0 +1,16 @@
+<div class="card blue lighten-2">
+  <div class="card-content white-text">
+    <span class="card-title"><%= simple_format(@blog.title) %></span>
+    <a href="" class="right">
+      <span>投稿者：</span><%= @blog.user.username %>
+    </a>
+    <div>--------------------------------------------------------------------------------------------------------------</div>
+    <%= simple_format(@blog.text) %>
+    <% if user_signed_in? && current_user.id == @blog.user_id %>
+      <div class="card-action">
+        <%= link_to '編集', "/blogs/#{@blog.id}/edit", :class => "btn", method: :get %>
+        <%= link_to '削除', "/blogs/#{@blog.id}", :class => "btn", method: :delete %>
+      </div>
+    <% end %>
+  </div>
+</div>

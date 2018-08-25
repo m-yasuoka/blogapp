@@ -1,0 +1,21 @@
+<div class="contents row">
+
+  <%= form_for @blog, url: "/blogs" do |f| %>
+    <h3>
+      新規投稿
+    </h3>
+
+    <div class="field">
+      <%= f.text_field :title, :name=>"title" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :text, :name=>"text" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class=>"btn", :value=>"投稿する" %>
+    </div>
+
+  <% end %>
+</div>
