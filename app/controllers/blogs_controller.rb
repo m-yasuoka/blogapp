@@ -35,23 +35,24 @@ class BlogsController < ApplicationController
 
   def random
 
-    blogs = Blog.all
-    max_id = 0
+    # blogs = Blog.all
+    # max_id = 0
 
-    blogs.each do |blog| #ブログの中で一番大きいidを検出する
-      max_id = blog.id  if max_id < blog.id
-    end
+    # blogs.each do |blog| #ブログの中で一番大きいidを検出する
+    #   max_id = blog.id  if max_id < blog.id
+    # end
 
-    while true do
-      blog_random_pickup = rand(max_id) + 1
-      if Blog.exists?(id:blog_random_pickup) #ランダムに選んだidのレコードが存在するか確かめる
-        random_blog_numder = blog_random_pickup
-        break
-      end
-    end
+    # while true do
+    #   blog_random_pickup = rand(max_id) + 1
+    #   if Blog.exists?(id:blog_random_pickup) #ランダムに選んだidのレコードが存在するか確かめる
+    #     random_blog_numder = blog_random_pickup
+    #     break
+    #   end
+    # end
 
-    @blog = Blog.find(random_blog_numder)
+    # @blog = Blog.find(random_blog_numder)
 
+    @blog = Blog.order("RAND()").first # 9/1追記 でランダムに一件取得できるらしい
     @username = current_user.username  if user_signed_in?
   end
 
